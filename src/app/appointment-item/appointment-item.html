@@ -1,0 +1,19 @@
+<div class="form-container">
+  <input [(ngModel)]="newAppointmentTitle" type="text" placeholder="Enter appointment title" />
+  <input [(ngModel)]="newAppointmentDescription" type="text" placeholder="Enter appointment description" />
+  <input [(ngModel)]="newAppointmentDate" type="date" placeholder="Enter appointment date" />
+  <button (click)="addAppointment()">Add Appointment</button>
+</div>
+
+<div class="appointments-list">
+  @for (appointment of appointmentsList; track appointment.id) {
+  <div class="appointment-card">
+    <h3 class="appointment-title">{{ appointment.title }}</h3>
+    <p class="appointment-description">{{ appointment.description }}</p>
+    <p class="appointment-date">{{ appointment.date }}</p>
+    <button class="top-right-btn" (click)="deleteAppointment(appointment.id)">Delete</button>
+  </div>
+  } @empty {
+  <p class="empty-state">No appointments found.</p>
+  }
+</div>
